@@ -18,6 +18,8 @@ public class NovelWebSource {
 
     private String novelURL;
 
+    private Document novelPage;
+
     public List<SpiderUnit> tirmedChapterList = new ArrayList<>();
 
     public NovelWebSource() {
@@ -80,14 +82,14 @@ public class NovelWebSource {
             Thread.sleep(2000);
 
             //获取document
-            Document document = document = Jsoup.connect(novelURL)
+            this.novelPage = Jsoup.connect(novelURL)
                     .cookies(this.cookies)
                     .get();
             Thread.sleep(2000);
 //            System.out.print("*");
 
             //获取chapterList
-            Element novel = novel = document.getElementById("chapterList");
+            Element novel = this.novelPage.getElementById("chapterList");
             if (novel == null) {
                 System.err.println("页面获取失败");
                 throw new NullPointerException("获取document页面不包含chapterList字段，请重新获取页面");
@@ -229,18 +231,19 @@ public class NovelWebSource {
         }
 
         //封装小说的每个Volume，形成VolumeList
+        int volumeNameLimit = 100;
         List<Volume> volumes = new ArrayList<>();
         List<Chapter> chapterList = new ArrayList<>();
         Iterator<SpiderUnit> iterator = this.tirmedChapterList.iterator();
         Volume volume = new Volume();
-        if(iterator.hasNext()) {
-            SpiderUnit unit = iterator.next();
-            if(unit.isSeparater) {
-                volume.setName(unit.getChapterWebSource().text());
-            }else {
-                //否则遍历到下一个分隔符
+        if(this.tirmedChapterList.get(0) != null) {
+            if(this.tirmedChapterList.get(0).isSeparater) {
+                SpiderUnit next = iterator.next();
+                if(next.getChapterWebSource().text().length()<volumeNameLimit)
+                volume.setName(next.getChapterWebSource().text());
             }
         }
+
         while (iterator.hasNext()) {
             SpiderUnit unit = iterator.next();
             if(!unit.isSeparater) {
@@ -252,12 +255,21 @@ public class NovelWebSource {
 
                 chapterList = new ArrayList<>();
                 volume = new Volume();
-                volume.setName(unit.getChapterWebSource().text());
+                if(unit.getChapterWebSource().text().length()<volumeNameLimit) {
+                    volume.setName(unit.getChapterWebSource().text());
+                }
             }
         }
         volume.setChapterList(chapterList);
         volumes.add(volume);
-        Novel novel = new Novel("testBook","ImgURL",volumes);
+
+        //获取小说名
+        //XPath: /html/body/div[3]/section/div/div[1]/div[1]/div[2]/h2
+        JXDocument jxDocument = JXDocument.create(this.novelPage);
+        JXNode novelTitle = jxDocument.selNOne("//h2[@class=\"p-t-10 text-normal\"]");
+
+        //封装未Novel类
+        Novel novel = new Novel(novelTitle.asElement().text(),"ImgURL",volumes);
         return novel;
     }
 

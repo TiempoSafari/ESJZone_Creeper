@@ -3,7 +3,7 @@ package org.tiempo.entity;
 import java.util.List;
 
 public class Volume {
-    private String name;
+    private String name = "Nonamed";
     private List<Chapter> chapterList;
 
     public Volume() {
