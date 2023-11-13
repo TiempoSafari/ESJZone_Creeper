@@ -8,6 +8,8 @@ import java.util.List;
 public class Novel {
     private String novelName;
 
+    private String novelInfo;
+
     private String novelImgPath;
 
     private List<Volume> VolumeList;
@@ -17,6 +19,13 @@ public class Novel {
 
     public Novel(String novelName, String novelImgPath, List<Volume> volumeList) {
         this.novelName = novelName;
+        this.novelImgPath = novelImgPath;
+        VolumeList = volumeList;
+    }
+
+    public Novel(String novelName, String novelInfo, String novelImgPath, List<Volume> volumeList) {
+        this.novelName = novelName;
+        this.novelInfo = novelInfo;
         this.novelImgPath = novelImgPath;
         VolumeList = volumeList;
     }

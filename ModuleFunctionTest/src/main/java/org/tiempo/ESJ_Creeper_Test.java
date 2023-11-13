@@ -13,7 +13,8 @@ public class ESJ_Creeper_Test {
 //        NovelWebSource novelWebSource = new NovelWebSource("https://www.esjzone.me/detail/1677487185.html");    //章节较少，测试用
 //        NovelWebSource novelWebSource = new NovelWebSource("https://www.esjzone.me/detail/1692177832.html");
 //        NovelWebSource novelWebSource = new NovelWebSource("https://www.esjzone.me/detail/1626789484.html");    //章节较少，测试用
-        NovelWebSource novelWebSource = new NovelWebSource("https://www.esjzone.me/detail/1677487185.html");    //章节较少，测试用
+//        NovelWebSource novelWebSource = new NovelWebSource("https://www.esjzone.me/detail/1677487185.html");    //章节较少，测试用
+        NovelWebSource novelWebSource = new NovelWebSource("https://www.esjzone.me/detail/1614767388.html");
         novelWebSource.setCookies(ESJConnector.getCookies());
         novelWebSource.printCookies();
         novelWebSource.getChapterList();

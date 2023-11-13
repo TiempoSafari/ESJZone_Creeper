@@ -277,8 +277,13 @@ public class NovelWebSource {
         //获取小说封面图
         String coverPath = NovelImgDownloader.coverDownload(this.novelPage);
 
+        //获取小说简介
+        //:/body/div[3]/section/div/div[1]/div[2]/div/div/div/p
+        JXNode novelInfo = jxDocument.selNOne("/body/div[3]/section/div/div[1]/div[2]/div/div/div/p");
+
         //封装未Novel类
-        Novel novel = new Novel(novelTitle.asElement().text(),coverPath,volumes);
+//        Novel novel = new Novel(novelTitle.asElement().text(),coverPath,volumes);
+        Novel novel = new Novel(novelTitle.asElement().text(),novelInfo.asElement().text(),coverPath,volumes);
         return novel;
     }
 

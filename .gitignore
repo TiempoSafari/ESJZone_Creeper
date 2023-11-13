@@ -64,3 +64,5 @@ swagger.json
 
 #private file
 config.yml
+
+repository/
