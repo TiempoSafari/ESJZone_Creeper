@@ -1,14 +1,23 @@
 package org.tiempo.entity;
 
-
+import org.jsoup.nodes.Element;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 储存小说爬取后的章节信息
+ */
 public class Chapter {
+    //章节名称
     public String name;
-    public String text;
-    public List<String> textList = new ArrayList<>();
 
+    public String text;
+    //章节内容，每段为String类型用于导出Word格式
+    public List<String> textList = new ArrayList<>();
+    //章节内容，每段为Element类型用于导出Epub格式
+    public List<Element> textElementList = new ArrayList<>();
+
+    //Constructor
     public Chapter() {
     }
 
@@ -22,6 +31,7 @@ public class Chapter {
         this.textList = textList;
     }
 
+    //Getter&Setter
     public String getName() {
         return name;
     }
@@ -50,7 +60,6 @@ public class Chapter {
     public String toString() {
         return "Chapter{" +
                 "name='" + name + '\'' +
-                ", text='" + text + '\'' +
                 ", textList=" + textList +
                 '}';
     }

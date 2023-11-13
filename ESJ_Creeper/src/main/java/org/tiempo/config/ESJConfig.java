@@ -1,10 +1,17 @@
 package org.tiempo.config;
 
+/**
+ * 用于ESJ登录的配置信息类
+ */
 public class ESJConfig {
+    //用户登录页面URL
     private String loginPath;
+    //登录邮箱
     private String email;
+    //登录密码
     private String password;
 
+    //Getter&Setter
     public String getLoginPath() {
         return loginPath;
     }

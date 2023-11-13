@@ -2,6 +2,9 @@ package org.tiempo.entity;
 
 import java.util.List;
 
+/**
+ * 小说分卷
+ */
 public class Volume {
     private String name = "Nonamed";
     private List<Chapter> chapterList;

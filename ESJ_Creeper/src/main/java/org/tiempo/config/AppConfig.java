@@ -1,5 +1,8 @@
 package org.tiempo.config;
 
+/**
+ * ESJ_Creeper配置类
+ */
 public class AppConfig {
     private ESJConfig esjConfig;
     private WebDriverConfig webDriverConfig;

@@ -2,6 +2,9 @@ package org.tiempo.entity;
 
 import org.jsoup.nodes.Element;
 
+/**
+ * 爬取单元，包含基本信息
+ */
 public class SpiderUnit {
     public Boolean isSeparater;
 

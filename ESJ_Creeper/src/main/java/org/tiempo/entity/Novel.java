@@ -2,6 +2,9 @@ package org.tiempo.entity;
 
 import java.util.List;
 
+/**
+ * 用于保存爬取后的小说，并将其存入数据库
+ */
 public class Novel {
     private String novelName;
 

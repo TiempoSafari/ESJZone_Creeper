@@ -12,6 +12,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * 爬取前小说的网络资源
+ */
 public class NovelWebSource {
 
     private Map<String,String> cookies;
@@ -66,6 +69,8 @@ public class NovelWebSource {
         for (JXNode jxNode : texts) {
             Element text = jxNode.asElement();
             textList.add(text.text());
+            //在Chapter中加入Element元素便于生成Epub格式
+            chapter.textElementList.add(text);
         }
         chapter.setTextList(textList);
 
