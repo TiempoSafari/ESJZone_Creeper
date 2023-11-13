@@ -6,6 +6,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.seimicrawler.xpath.JXDocument;
 import org.seimicrawler.xpath.JXNode;
+import org.tiempo.util.NovelImgDownloader;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -273,8 +274,11 @@ public class NovelWebSource {
         JXDocument jxDocument = JXDocument.create(this.novelPage);
         JXNode novelTitle = jxDocument.selNOne("//h2[@class=\"p-t-10 text-normal\"]");
 
+        //获取小说封面图
+        String coverPath = NovelImgDownloader.coverDownload(this.novelPage);
+
         //封装未Novel类
-        Novel novel = new Novel(novelTitle.asElement().text(),"ImgURL",volumes);
+        Novel novel = new Novel(novelTitle.asElement().text(),coverPath,volumes);
         return novel;
     }
 

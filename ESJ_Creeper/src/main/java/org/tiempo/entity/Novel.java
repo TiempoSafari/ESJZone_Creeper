@@ -8,16 +8,16 @@ import java.util.List;
 public class Novel {
     private String novelName;
 
-    private String novelImg;
+    private String novelImgPath;
 
     private List<Volume> VolumeList;
 
     public Novel() {
     }
 
-    public Novel(String novelName, String novelImg, List<Volume> volumeList) {
+    public Novel(String novelName, String novelImgPath, List<Volume> volumeList) {
         this.novelName = novelName;
-        this.novelImg = novelImg;
+        this.novelImgPath = novelImgPath;
         VolumeList = volumeList;
     }
 
@@ -29,12 +29,12 @@ public class Novel {
         this.novelName = novelName;
     }
 
-    public String getNovelImg() {
-        return novelImg;
+    public String getNovelImgPath() {
+        return novelImgPath;
     }
 
-    public void setNovelImg(String novelImg) {
-        this.novelImg = novelImg;
+    public void setNovelImgPath(String novelImgPath) {
+        this.novelImgPath = novelImgPath;
     }
 
     public List<Volume> getVolumeList() {
@@ -59,7 +59,7 @@ public class Novel {
     public String toString() {
         return "Novel{" +
                 "novelName='" + novelName + '\'' +
-                ", novelImg='" + novelImg + '\'' +
+                ", novelImg='" + novelImgPath + '\'' +
                 ", VolumeList=" + VolumeList +
                 '}';
     }
